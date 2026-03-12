@@ -1,0 +1,96 @@
+{
+  "entities": {
+    "Project": {
+      "title": "Project",
+      "description": "A portfolio project item",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "screenshotUrl": { "type": "string" },
+        "liveUrl": { "type": "string" },
+        "githubUrl": { "type": "string" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "order": { "type": "number" }
+      },
+      "required": ["title", "screenshotUrl"]
+    },
+    "Skill": {
+      "title": "Skill",
+      "description": "A technical skill with proficiency level",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "percentage": { "type": "number" },
+        "category": { "type": "string" },
+        "iconUrl": { "type": "string" },
+        "order": { "type": "number" }
+      },
+      "required": ["name", "percentage"]
+    },
+    "Experience": {
+      "title": "Experience",
+      "description": "Professional work experience",
+      "type": "object",
+      "properties": {
+        "company": { "type": "string" },
+        "role": { "type": "string" },
+        "duration": { "type": "string" },
+        "description": { "type": "string" },
+        "order": { "type": "number" }
+      },
+      "required": ["company", "role", "duration"]
+    },
+    "CaseStudy": {
+      "title": "Case Study",
+      "description": "In-depth look at a project or app",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "slug": { "type": "string" },
+        "content": { "type": "string" },
+        "thumbnail": { "type": "string" },
+        "date": { "type": "string" },
+        "summary": { "type": "string" }
+      },
+      "required": ["title", "slug", "content"]
+    },
+    "Client": {
+      "title": "Client",
+      "description": "Client testimonial or logo",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "logoUrl": { "type": "string" },
+        "testimonial": { "type": "string" },
+        "order": { "type": "number" }
+      },
+      "required": ["name"]
+    },
+    "Profile": {
+      "title": "Profile",
+      "description": "Personal profile information",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "designation": { "type": "string" },
+        "bio": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "resumeUrl": { "type": "string" },
+        "photoUrl": { "type": "string" },
+        "github": { "type": "string" },
+        "linkedin": { "type": "string" },
+        "facebook": { "type": "string" }
+      }
+    }
+  },
+  "firestore": {
+    "/projects": { "schema": "Project", "description": "List of portfolio projects" },
+    "/skills": { "schema": "Skill", "description": "Technical skills" },
+    "/experience": { "schema": "Experience", "description": "Work history" },
+    "/caseStudies": { "schema": "CaseStudy", "description": "Detailed case studies" },
+    "/clients": { "schema": "Client", "description": "Clients and testimonials" },
+    "/profile": { "schema": "Profile", "description": "Single profile document" }
+  }
+}
