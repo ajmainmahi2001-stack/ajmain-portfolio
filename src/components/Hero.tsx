@@ -17,13 +17,13 @@ export default function Hero({ profile }: { profile: Profile | null }) {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-primary-accent font-medium tracking-widest uppercase mb-4 text-sm">
-            {profile?.designation || "Full Stack Developer"}
+            Full Stack Developer
           </h2>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            {profile?.name?.split(' ')[0] || "Ajmain"} <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-accent to-neon-highlight">{profile?.name?.split(' ').slice(1).join(' ') || "Mahtab"}</span>
+            Ajmain <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-accent to-neon-highlight">Mahtab</span>
           </h1>
           <p className="text-text-secondary text-lg mb-8 max-w-lg leading-relaxed">
-            {profile?.bio || "Crafting robust, scalable, and high-performance web applications with modern technologies. Specializing in end-to-end development from database architecture to pixel-perfect UI."}
+            Crafting robust, scalable, and high-performance web applications with modern technologies. Specializing in end-to-end development from database architecture to pixel-perfect UI.
           </p>
           <div className="flex flex-wrap gap-4">
             <a href="#projects" className="px-8 py-4 bg-primary-accent text-white rounded-full font-semibold hover:bg-neon-highlight transition-all neon-border">

@@ -103,16 +103,19 @@ export default function Admin({ user, loading }: { user: any, loading: boolean }
       if (activeTab === 'profile') {
         const profileData = {
           ...data,
+          // Only these two are editable and dynamic
+          photoUrl: data.photoUrl || profile?.photoUrl || '',
+          resumeUrl: data.resumeUrl || profile?.resumeUrl || '',
+          // The rest are hardcoded in components, but we keep them in DB for consistency if needed
           location: 'Chattogram, Bangladesh',
-          // Preserve existing fields if they are not in the form
-          name: profile?.name || 'Ajmain Mahi',
-          designation: profile?.designation || 'Full Stack Developer',
-          bio: profile?.bio || 'Crafting robust, scalable, and high-performance web applications with modern technologies. Specializing in end-to-end development from database architecture to pixel-perfect UI.',
-          email: profile?.email || 'ajmainmahi2001@gmail.com',
-          phone: profile?.phone || '+8801926349081',
-          github: profile?.github || 'https://github.com',
-          linkedin: profile?.linkedin || 'https://linkedin.com',
-          facebook: profile?.facebook || 'https://facebook.com',
+          name: 'Ajmain Mahtab',
+          designation: 'Full Stack Developer',
+          bio: 'Crafting robust, scalable, and high-performance web applications with modern technologies. Specializing in end-to-end development from database architecture to pixel-perfect UI.',
+          email: 'ajmainmahi2001@gmail.com',
+          phone: '+8801926349081',
+          github: 'https://github.com/ajmain05',
+          linkedin: 'https://www.linkedin.com/in/ajmain05/',
+          facebook: 'https://www.facebook.com/ajmain.mahi.1',
         };
         if (profile?.id) {
           await updateDoc(doc(db, 'profile', profile.id), profileData);

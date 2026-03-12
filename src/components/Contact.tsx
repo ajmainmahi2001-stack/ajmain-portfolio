@@ -27,7 +27,7 @@ export default function Contact({ profile }: { profile: Profile | null }) {
                 </div>
                 <div>
                   <p className="text-xs font-bold text-text-secondary uppercase tracking-widest">Email Me</p>
-                  <p className="text-lg font-medium text-white">{profile?.email || 'ajmainmahi2001@gmail.com'}</p>
+                  <p className="text-lg font-medium text-white">ajmainmahi2001@gmail.com</p>
                 </div>
               </div>
               <div className="flex items-center gap-6">
@@ -36,7 +36,7 @@ export default function Contact({ profile }: { profile: Profile | null }) {
                 </div>
                 <div>
                   <p className="text-xs font-bold text-text-secondary uppercase tracking-widest">Call Me</p>
-                  <p className="text-lg font-medium text-white">{profile?.phone || '+8801926349081'}</p>
+                  <p className="text-lg font-medium text-white">+8801926349081</p>
                 </div>
               </div>
               <div className="flex items-center gap-6">
@@ -45,7 +45,7 @@ export default function Contact({ profile }: { profile: Profile | null }) {
                 </div>
                 <div>
                   <p className="text-xs font-bold text-text-secondary uppercase tracking-widest">Location</p>
-                  <p className="text-lg font-medium text-white">{profile?.location || 'Chattogram, Bangladesh'}</p>
+                  <p className="text-lg font-medium text-white">Chattogram, Bangladesh</p>
                 </div>
               </div>
             </div>
