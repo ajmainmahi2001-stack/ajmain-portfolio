@@ -101,10 +101,23 @@ export default function Admin({ user, loading }: { user: any, loading: boolean }
 
     try {
       if (activeTab === 'profile') {
+        const profileData = {
+          ...data,
+          location: 'Chattogram, Bangladesh',
+          // Preserve existing fields if they are not in the form
+          name: profile?.name || 'Ajmain Mahi',
+          designation: profile?.designation || 'Full Stack Developer',
+          bio: profile?.bio || 'Crafting robust, scalable, and high-performance web applications with modern technologies. Specializing in end-to-end development from database architecture to pixel-perfect UI.',
+          email: profile?.email || 'ajmainmahi2001@gmail.com',
+          phone: profile?.phone || '+8801926349081',
+          github: profile?.github || 'https://github.com',
+          linkedin: profile?.linkedin || 'https://linkedin.com',
+          facebook: profile?.facebook || 'https://facebook.com',
+        };
         if (profile?.id) {
-          await updateDoc(doc(db, 'profile', profile.id), data);
+          await updateDoc(doc(db, 'profile', profile.id), profileData);
         } else {
-          await addDoc(collection(db, 'profile'), data);
+          await addDoc(collection(db, 'profile'), profileData);
         }
         toast.success('Profile updated successfully!');
       } else {
@@ -194,22 +207,13 @@ export default function Admin({ user, loading }: { user: any, loading: boolean }
                 {activeTab === 'profile' && (
                   <form onSubmit={handleSave} className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-6">
-                      <Input name="name" label="Full Name" defaultValue={profile?.name} required />
-                      <Input name="designation" label="Designation" defaultValue={profile?.designation} required />
+                      <Input name="photoUrl" label="Hero Section Image URL (Google Drive)" defaultValue={profile?.photoUrl} />
+                      <Input name="resumeUrl" label="CV Drive Link (Google Drive)" defaultValue={profile?.resumeUrl} />
                     </div>
-                    <Input name="bio" label="Bio" defaultValue={profile?.bio} textarea />
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <Input name="email" label="Email" defaultValue={profile?.email} />
-                      <Input name="phone" label="Phone" defaultValue={profile?.phone} />
-                    </div>
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <Input name="photoUrl" label="Photo URL (Google Drive)" defaultValue={profile?.photoUrl} />
-                      <Input name="resumeUrl" label="Resume URL (Google Drive)" defaultValue={profile?.resumeUrl} />
-                    </div>
-                    <div className="grid md:grid-cols-3 gap-6">
-                      <Input name="github" label="GitHub" defaultValue={profile?.github} />
-                      <Input name="linkedin" label="LinkedIn" defaultValue={profile?.linkedin} />
-                      <Input name="facebook" label="Facebook" defaultValue={profile?.facebook} />
+                    <div className="p-4 bg-primary-accent/5 rounded-2xl border border-primary-accent/20">
+                      <p className="text-sm text-text-secondary">
+                        Note: Name, Bio, Social links, and Location (Chattogram, Bangladesh) are set to default values and are not editable here.
+                      </p>
                     </div>
                     <button type="submit" className="w-full py-4 bg-primary-accent text-white rounded-xl font-bold hover:bg-neon-highlight transition-all flex items-center justify-center gap-2">
                       <Save size={20} /> Save Profile

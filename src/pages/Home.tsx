@@ -66,7 +66,7 @@ export default function Home() {
       <Portfolio projects={projects} />
       <CaseStudies studies={caseStudies} />
       <Clients clients={clients} />
-      <Contact />
+      <Contact profile={profile} />
     </div>
   );
 }

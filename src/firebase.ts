@@ -2,6 +2,7 @@ import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 import firebaseConfig from '../firebase-applet-config.json';
+import toast from 'react-hot-toast';
 
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app, firebaseConfig.firestoreDatabaseId);
@@ -61,15 +62,27 @@ export function handleFirestoreError(error: unknown, operationType: OperationTyp
 }
 
 export const signInWithGoogle = async () => {
+  const toastId = toast.loading('Signing in...');
   try {
     const result = await signInWithPopup(auth, googleProvider);
     if (result.user.email !== 'ajmainmahi2001@gmail.com') {
       await signOut(auth);
-      throw new Error('Unauthorized access. Only ajmainmahi2001@gmail.com is allowed.');
+      toast.error('Unauthorized access. Only ajmainmahi2001@gmail.com is allowed.', { id: toastId });
+      throw new Error('Unauthorized access.');
     }
+    toast.success('Signed in successfully!', { id: toastId });
     return result.user;
-  } catch (error) {
+  } catch (error: any) {
     console.error('Auth Error:', error);
+    let message = 'Failed to sign in.';
+    if (error.code === 'auth/popup-blocked') {
+      message = 'Popup blocked! Please allow popups for this site.';
+    } else if (error.code === 'auth/unauthorized-domain') {
+      message = 'This domain is not authorized in Firebase Console.';
+    } else if (error.message) {
+      message = error.message;
+    }
+    toast.error(message, { id: toastId });
     throw error;
   }
 };

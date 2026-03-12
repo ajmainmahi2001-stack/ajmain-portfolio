@@ -57,4 +57,5 @@ export interface Profile {
   github: string;
   linkedin: string;
   facebook: string;
+  location?: string;
 }
