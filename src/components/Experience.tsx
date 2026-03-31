@@ -9,8 +9,8 @@ export default function Experience({ skills, experiences }: { skills: Skill[], e
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Skills Section */}
           <div>
-            <h2 className="text-3xl font-bold mb-12 flex items-center">
-              <span className="w-12 h-1 bg-primary-accent mr-4 rounded-full" />
+            <h2 className="text-2xl md:text-3xl font-bold mb-8 md:mb-12 flex items-center justify-center lg:justify-start">
+              <span className="w-8 md:w-12 h-1 bg-primary-accent mr-4 rounded-full" />
               Technical Skills
             </h2>
             <div className="space-y-8">
@@ -45,8 +45,8 @@ export default function Experience({ skills, experiences }: { skills: Skill[], e
 
           {/* Experience Section */}
           <div>
-            <h2 className="text-3xl font-bold mb-12 flex items-center">
-              <span className="w-12 h-1 bg-neon-highlight mr-4 rounded-full" />
+            <h2 className="text-2xl md:text-3xl font-bold mb-8 md:mb-12 flex items-center justify-center lg:justify-start">
+              <span className="w-8 md:w-12 h-1 bg-neon-highlight mr-4 rounded-full" />
               Work Experience
             </h2>
             <div className="space-y-8 relative before:absolute before:left-0 before:top-0 before:w-px before:h-full before:bg-primary-accent/20">

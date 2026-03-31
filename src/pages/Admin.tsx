@@ -92,8 +92,8 @@ export default function Admin({ user, loading }: { user: any, loading: boolean }
     const data: any = Object.fromEntries(formData.entries());
 
     // Handle tags for projects
-    if (activeTab === 'projects' && data.tags) {
-      data.tags = data.tags.split(',').map((t: string) => t.trim());
+    if (activeTab === 'projects') {
+      data.tags = data.tags ? data.tags.split(',').map((t: string) => t.trim()).filter(Boolean) : [];
     }
     // Handle number for order and percentage
     if (data.order) data.order = Number(data.order);
@@ -225,7 +225,7 @@ export default function Admin({ user, loading }: { user: any, loading: boolean }
                 )}
 
                 {activeTab === 'projects' && projects.map(item => (
-                  <ItemRow key={item.id} title={item.title} subtitle={item.tags.join(', ')} onEdit={() => { setEditingItem(item); setShowModal(true); }} onDelete={() => handleDelete(item.id!)} />
+                  <ItemRow key={item.id} title={item.title} subtitle={Array.isArray(item.tags) ? item.tags.join(', ') : ''} onEdit={() => { setEditingItem(item); setShowModal(true); }} onDelete={() => handleDelete(item.id!)} />
                 ))}
                 {activeTab === 'skills' && skills.map(item => (
                   <ItemRow key={item.id} title={item.name} subtitle={`${item.percentage}%`} onEdit={() => { setEditingItem(item); setShowModal(true); }} onDelete={() => handleDelete(item.id!)} />
@@ -275,7 +275,7 @@ export default function Admin({ user, loading }: { user: any, loading: boolean }
                     <Input name="screenshotUrl" label="Screenshot URL (Google Drive)" defaultValue={editingItem?.screenshotUrl} required />
                     <Input name="liveUrl" label="Live Demo URL" defaultValue={editingItem?.liveUrl} />
                     <Input name="githubUrl" label="GitHub URL" defaultValue={editingItem?.githubUrl} />
-                    <Input name="tags" label="Tags (comma separated)" defaultValue={editingItem?.tags?.join(', ')} />
+                    <Input name="tags" label="Tags (comma separated)" defaultValue={Array.isArray(editingItem?.tags) ? editingItem.tags.join(', ') : ''} />
                     <Input name="order" label="Order" type="number" defaultValue={editingItem?.order || 0} />
                   </>
                 )}

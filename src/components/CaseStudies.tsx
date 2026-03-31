@@ -8,10 +8,10 @@ export default function CaseStudies({ studies }: { studies: CaseStudy[] }) {
   return (
     <section id="case-studies" className="py-24 bg-card-bg/20">
       <div className="container mx-auto px-6">
-        <div className="flex justify-between items-end mb-16">
+        <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-12 md:mb-16 text-center md:text-left">
           <div>
-            <h2 className="text-4xl font-bold mb-4">Case <span className="text-neon-highlight">Studies</span></h2>
-            <p className="text-text-secondary max-w-xl">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Case <span className="text-neon-highlight">Studies</span></h2>
+            <p className="text-text-secondary text-sm md:text-base max-w-xl">
               In-depth analysis of complex problems and the strategic solutions I implemented to solve them.
             </p>
           </div>

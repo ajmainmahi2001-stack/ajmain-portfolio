@@ -7,9 +7,9 @@ export default function Portfolio({ projects }: { projects: Project[] }) {
   return (
     <section id="projects" className="py-24">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4">Featured <span className="text-primary-accent">Projects</span></h2>
-          <p className="text-text-secondary max-w-2xl mx-auto">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured <span className="text-primary-accent">Projects</span></h2>
+          <p className="text-text-secondary text-sm md:text-base max-w-2xl mx-auto">
             A selection of my recent works, ranging from complex web applications to sleek UI designs.
           </p>
         </div>
@@ -35,7 +35,7 @@ export default function Portfolio({ projects }: { projects: Project[] }) {
 
               <div className="p-6">
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag, i) => (
+                  {Array.isArray(project.tags) && project.tags.map((tag, i) => (
                     <span key={i} className="text-[10px] uppercase tracking-wider font-bold px-3 py-1 bg-primary-accent/10 text-primary-accent rounded-full border border-primary-accent/20">
                       {tag}
                     </span>
